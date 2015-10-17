@@ -8,8 +8,17 @@ module.exports = function(grunt) {
       },
       src: ['lib/**/*.js', 'examples/**/*.js', 'Gruntfile.js'],
     },
+    mochaTest: {
+      test: {
+        options: {
+          reporter: 'spec',
+        },
+        src: ['test/**/*.js'],
+      },
+    },
   });
 
   grunt.loadNpmTasks('grunt-jscs');
-  grunt.registerTask('default', ['jscs']);
+  grunt.loadNpmTasks('grunt-mocha-test');
+  grunt.registerTask('default', ['jscs', 'mochaTest']);
 };
